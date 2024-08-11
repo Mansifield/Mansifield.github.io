@@ -15,7 +15,7 @@
 
 
 
-<title>折腾三日 | Hexo</title>
+<title>关于控件可见性的切换 | Hexo</title>
 
 
 
@@ -154,7 +154,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        折腾三日
+        关于控件可见性的切换
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -221,16 +221,12 @@
 
 <!-- toc -->
 
-  <!-- tocbot -->
-<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
-
-
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        折腾三日
+        关于控件可见性的切换
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -246,7 +242,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>1.4k words</span>
+            <span>1.1k words</span>
           </span>
           
         </section>
@@ -255,46 +251,29 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p><img src="/2024/08/10/%E6%8A%98%E8%85%BE%E4%B8%89%E6%97%A5/882569.png"></p>
-<p>为了制作这个博客，我足足折腾了三天，前面都还好，就是那个 <code>npm install hexo-deployer-git --save</code> 卡了我半天，期间也找过一些解决办法，说用淘宝镜像什么的，但是都没用，只能是一直反复尝试……实际上，我真正操作的时间只有不到10分钟，剩下的时间都在下载、失败、重试、下载、失败。哪怕是搭了梯子也没用，不知道是不是我操作问题，好在终于是成功了。</p>
-<p><strong>反正，仅在此给后来者一点建议：多试就完事了，下载到第三天的时候我自己都不报什么期望了，但是你看，这不就成功了？努力总是会带来一点惊喜的。</strong></p>
-<h2 id="搭建框架的教程"><a href="#搭建框架的教程" class="headerlink" title="搭建框架的教程"></a>搭建框架的教程</h2><p>分享一下使用Hexo框架搭建博客的相关教程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://tech.yemengstar.com/hexo-tutorial-deploy-githubpages-beginner/  #很详细的Hexo部署教程，基本每一步都有截图。</span><br><span class="line"></span><br><span class="line">https://mao-design.pages.dev/posts/1185/  #以Github为载体，用 Netlify 部署博客的教程，可以提高访问速度。</span><br></pre></td></tr></table></figure>
+    <p>一开始我使用的是一个封装好的切换函数（由于写博客的时候我已经删掉了原代码，这里没有贴上代码），每次我点击时，就对可见性进行反转……不过之后的测试中我遇到了一个BUG，当我先点击continue再点击start时，可见性关系会彻底错乱：</p>
+<blockquote>
+<p>简单来说就是，由于我点击了continue，continuemenu可见、setting、end不可见，此时再点击start进行反转，就会变成setting、end可见……一团乱。</p>
+</blockquote>
+<p>之后我仔细思考了一下，决定加上一个记录点击次数的功能。途中发现如果按照之前的操作那样点击，也就是continue - start，可见性倒是没乱了，但是由于点击次数加了1，而第二次点击时的效果是恢复可见性……这就导致我需要点两次才能弹出菜单，所以我给三个菜单的点击次数都分别加上了点击次数的统计，并且在他们点击的时候清除另外两个按钮的点击次数，这样就不会导致需要点击两次才能弹出来的情况了。</p>
+<p>不过代码方面就……朴实无华。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">func _ready():</span><br><span class="line"># 初始可见性</span><br><span class="line">$ScrollContainer/VBoxContainer/Start.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/End.visible = true</span><br><span class="line"></span><br><span class="line"># 点击控件的可见性切换</span><br><span class="line">var click_counts = [0, 0, 0]</span><br><span class="line">func _on_start_pressed(): toggle_visibility(0)</span><br><span class="line">func _on_continue_pressed(): toggle_visibility(1)</span><br><span class="line">func _on_setting_pressed(): toggle_visibility(2)</span><br><span class="line"></span><br><span class="line">func toggle_visibility(button_index):</span><br><span class="line">	for i in range(3):</span><br><span class="line">		if i == button_index:</span><br><span class="line">			click_counts[i] += 1</span><br><span class="line">			if click_counts[i] % 2 == 0:</span><br><span class="line">				$ScrollContainer/VBoxContainer/End.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">				$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">				$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">			else:</span><br><span class="line">				if i == 0:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">				elif i == 1:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">				elif i == 2:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">		else:</span><br><span class="line">			click_counts[i] = 0</span><br></pre></td></tr></table></figure>
 
-<p>框架搭建好之后就可以使用Hexo三大家了，和直接使用HTML相比，Hexo的优势主要是方便快捷，而且添加文章不需要再敲代码的格式。</p>
-<h2 id="给博客更换主题"><a href="#给博客更换主题" class="headerlink" title="给博客更换主题"></a>给博客更换主题</h2><p>进入hexo官网，选择主题，选择自己喜欢的主题然后下载即可，注：有些主题所需的插件不知是什么原因，会下载出错，所以如果遇到下载出错，那就换个主题吧</p>
-<p>当然，你也可以考虑我现在正在用的主题（3-hexo）</p>
-<ol>
-<li><p>3-hexo是hexo的主题，如果你也喜欢这款主题的话，则可以把我准备好的主题文件夹（3-hexo）移动到自己博客的themes文件夹里面</p>
-</li>
-<li><p>此外这款主题要需要对博客的_config,yml文件进行一些设置，我这里已经准备好了，只需要把我准备好的_config.yml移到自己博客的根目录下即可</p>
-</li>
-<li><p>但我只把这款主题的一些基本功能开启了而已，还有一些功能需要自己手动开启，比如全文搜索，数字统计之类的功能</p>
-</li>
-<li><p>至于如何开启全文搜索和数字统计之类的功能，该主题的作者已经在3-hexo里面的_config.yml里面写的有详细的开启方法</p>
-</li>
-<li><p>更详细的功能可以参考该主题作者的博客，上面有该主题的一些详细的使用教程</p>
-</li>
-<li><p>该主题作者的博客地址：<a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/%EF%BC%8C%E8%AF%A5%E4%B8%BB%E9%A2%98%E7%9A%84GitHub%E5%9C%B0%E5%9D%80">https://yelog.org/2017/03/23/3-hexo-instruction/，该主题的GitHub地址</a>: <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">https://github.com/yelog/hexo-theme-3-hexo</a> ,上面有该主题配置的详细资料，本文章只是记录自己所遇到的问题以及一些基本的使用方法。</p>
-</li>
-</ol>
-<p>一般每个主题都会有一个GitHub仓库，上面详细的写的有你所下载的主题需要什么必备插件（这些插件是运行hexo主题的必备插件，没有这些插件的话自己的hexo主题会运行不正常的），以及安装方法，每个主题安装的方法略有不同，但是大差不差，基本流程：</p>
-<p>在自己博客的根目录下，把下载好的主题包 <em><strong>解压</strong></em> 并移到一个名为 <em><strong>themes</strong></em> 的文件夹下，然后在回到根目录下，编辑一个叫 <strong>_config.yml</strong> 的配置文件，打开这个文件，找到 <strong>theme</strong> 选项，输入你<strong>要配置的主题的名字</strong>，<em><strong>注意</strong></em> 选项与名字之间要有空格，例：<code>theme: 主题名称</code></p>
-<p>在使用快捷键ctrl+s保存即可，在回到根目录上，打开终端，输入命令 <code>hexo clean</code> ，在输入命令 <code>hexo g</code> ，最后输入 <code>hexo s</code> ，输入这三个命令之后没有红色的字体就说明没有报错，此时终端会显示一串网址 <code>http://localhost:4000</code> 输入这串网址即可预览自己博客的主题了，如果想停止访问的话，在终端按下快捷键 <code>ctrl+c</code> 即可退出。</p>
-<h2 id="更新博客的方法"><a href="#更新博客的方法" class="headerlink" title="更新博客的方法"></a>更新博客的方法</h2><p><strong>如何显示图片：</strong></p>
-<p>在 <code>blog/source/_posts</code> 目录下创建一个用于放 <strong>图片的文件夹</strong>，然后再在文件夹外面创建一个MD文件，注意： <strong><em>MD文件名</em> 要和 <em>图片文件夹名</em> 相同</strong></p>
-<p>例如：我用于存放图片的文件夹名称为 <strong>image</strong> ，里面有一张 <strong>Hello.png</strong> 图片。</p>
-<p>如果我想要上传名字为 <strong>Hello.png</strong> 的图片，只需要在md文件里面输入 <code>![](image/Hello.png)</code> 自己的博客就可以看到图片了。不过刚开始博客的时候可能不会显示，需要刷新一下。</p>
-<p>上面这个教程，如果部署到GitHub上一般是没有问题了，但是Gitee可能还会有问题，这时候就要看你的仓库的名字和你路径的名字是否一样，名字最好是自己的博客名，比如我的博客名是Mansifield,那么仓库名和路径字也必须是Mansifield。</p>
-<p>顺带再提一下文件命名相关问题：自己博客上就可看到图片了，图片名称、文件夹名称、和MD文件名称都可以为中文，但是为了防止错误推荐使用英文或者数字。但注意，图片文件夹名称 &#x3D;&#x3D; md文件名称。</p>
+<p>所以我的下一步是，精简代码，以下是我精简后的代码，我使用了一个新的函数来接受true or false，把初始可见性和后续的点击可见性合并到了一起。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">func _ready():</span><br><span class="line">	# 初始可见性</span><br><span class="line">	set_visibility(true, false, true, false, true, false, true)</span><br><span class="line"></span><br><span class="line"># 点击按钮的可见性切换</span><br><span class="line">var click_counts = [0, 0, 0]</span><br><span class="line"></span><br><span class="line">func _on_start_pressed(): toggle_visibility(0)</span><br><span class="line">func _on_continue_pressed(): toggle_visibility(1)</span><br><span class="line">func _on_setting_pressed(): toggle_visibility(2)</span><br><span class="line"></span><br><span class="line">func toggle_visibility(button_index):</span><br><span class="line">	# 清空其他按钮的点击次数</span><br><span class="line">	for i in range(click_counts.size()):</span><br><span class="line">		click_counts[i] = 0 if i != button_index else click_counts[i] + 1</span><br><span class="line">	</span><br><span class="line">	var is_visible = click_counts[button_index] % 2 == 0</span><br><span class="line">	print(&quot;按钮 %d 点击次数: %d，可见性: %s&quot; % [button_index, click_counts[button_index], is_visible])</span><br><span class="line">	match button_index:</span><br><span class="line">		0:</span><br><span class="line">			set_visibility(true, not is_visible, is_visible, false, is_visible, false, is_visible)</span><br><span class="line">		1:</span><br><span class="line">			set_visibility(true, false, true, not is_visible, is_visible, false, is_visible)</span><br><span class="line">		2:</span><br><span class="line">			set_visibility(true, false, true, false, true, not is_visible, is_visible)</span><br><span class="line"></span><br><span class="line">func set_visibility(start, start_menu, continue_, continue_menu, setting, setting_menu, end):</span><br><span class="line">	$ScrollContainer/VBoxContainer/Start.visible = start</span><br><span class="line">	$ScrollContainer/VBoxContainer/StartMenu.visible = start_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/Continue.visible = continue_</span><br><span class="line">	$ScrollContainer/VBoxContainer/ContinueMenu.visible = continue_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/Setting.visible = setting</span><br><span class="line">	$ScrollContainer/VBoxContainer/SettingMenu.visible = setting_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/End.visible = end</span><br></pre></td></tr></table></figure>
 
+<p>代码到这里就差不多完成了，不过我个人比较喜欢钻牛角尖，match的性能消耗稍微高了那么一点点点，换成数组的方式更加直观高效，visibilities[button_index]中的button_index代表我们点击的是第几个控件，这同时也会返回数组中对应行的值。不过记得，改成这样的话，前面的初始化也得改成数组的形式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 点击按钮的可见性切换</span><br><span class="line"></span><br><span class="line">......（未修改部分就省略了）</span><br><span class="line"></span><br><span class="line">	var visibilities = [</span><br><span class="line">		[true, not is_visible, is_visible, false, is_visible, false, is_visible],</span><br><span class="line">		[true, false, true, not is_visible, is_visible, false, is_visible],</span><br><span class="line">		[true, false, true, false, true, not is_visible, is_visible]</span><br><span class="line">	]</span><br><span class="line">	</span><br><span class="line">	set_visibility(visibilities[button_index])</span><br><span class="line"></span><br><span class="line">func set_visibility(visibility_array):</span><br><span class="line">	$ScrollContainer/VBoxContainer/Start.visible = visibility_array[0]</span><br><span class="line">	$ScrollContainer/VBoxContainer/StartMenu.visible = visibility_array[1]</span><br><span class="line">	$ScrollContainer/VBoxContainer/Continue.visible = visibility_array[2]</span><br><span class="line">	$ScrollContainer/VBoxContainer/ContinueMenu.visible = visibility_array[3]</span><br><span class="line">	$ScrollContainer/VBoxContainer/Setting.visible = visibility_array[4]</span><br><span class="line">	$ScrollContainer/VBoxContainer/SettingMenu.visible = visibility_array[5]</span><br><span class="line">	$ScrollContainer/VBoxContainer/End.visible = visibility_array[6]</span><br></pre></td></tr></table></figure>
+
+<p>好了，到这里真的就没了。我大概能想到代码下一步优化的控件，例如把数组也删掉，但一来我并不熟悉，二来太麻烦，大概这样就行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 取消掉数组</span><br><span class="line">$ScrollContainer/VBoxContainer/Start.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/StartMenu.visible = not is_visible if button_index == 0 else false</span><br></pre></td></tr></table></figure>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/%E9%97%B2%E8%B0%88/">闲谈</a>
+          <a href="/tags/%E5%88%B6%E4%BD%9C/">制作</a>
         </span>
       
     
@@ -303,13 +282,13 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2024/08/11/README/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          关于主题
-        </a>
-      
     </div>
     <div>
+      
+        <a href="/2024/08/11/README/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          关于主题
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
       
     </div>
   </div>

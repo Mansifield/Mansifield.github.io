@@ -1,274 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    晝行燈
-  </title>
-  <link rel="icon" href="/imgs/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/plugins/highlight/styles/atom-one-dark.css">
-  <!-- Gitalk -->
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script>
-      window.addEventListener('load', () => {
-        const gitalkContainer = document.getElementById('gitalk-container');
-        if (!gitalkContainer) return;
-        const gitalk = new Gitalk({
-          clientID: 'Ov23likPvjdlIziOvGTo',
-          clientSecret: '478dea663b74ac312c407e68dbc9bd17b83b79e2',
-          repo: 'Mansifield.github.io',      // The repository of store comments '
-          owner: 'Mansifield',
-          admin: ['Mansifield'],
-          id: location.pathname,      // Ensure uniqueness and length less than 50
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-        gitalk.render('gitalk-container');
-      })
-    </script>
-    
-<meta name="generator" content="Hexo 6.2.0"></head>
-<body>
-    <nav>
-  <div class="nav-item logo">
-    <a href="/">
-      <button class="btn btn-hover">
-        <span>
-          晝行燈
-        </span>
-      </button>
-    </a>
-  </div>
-  
-    <div class="nav-item"><a href="/archives">
-        主页
-      </a></div>
-    
-    <div class="nav-item"><a href="/tags">
-        标签
-      </a></div>
-    
-    <div class="nav-item"><a href="/about">
-        关于
-      </a></div>
-    
-</nav>
-    <main>
-        <div class="wrapper">
-    
-      
-        <article class="card ">
-  
-              
-                <div class="posted-on">『24年08月11日』</div>
-                <h3 class="article-title"><a href="/2024/08/11/README/"><span>
-                      关于主题
-                    </span></a></h3>
-                
-                    
-                      <div class="article-top-meta">
-                        
-                          
-                            <a href="/tags/闲谈/" class="post-tag">闲谈</a><a href="/tags/美化/" class="post-tag">美化</a>
-                              
-                      </div>
-                      
+  <meta charset="UTF-8">
 
-                          <div class="article-content">
-                            <div class="entry">
-                              
-                                    <h2 id="君の名は。"><a href="#君の名は。" class="headerlink" title="君の名は。"></a>君の名は。</h2><p>君の名は。是一款基于电影《你的名字》客制化的 hexo 主题，基于 hexo，使用了 ejs，stylus，normalize.css，主题简洁明了，仅此表达对电影你的名字的喜爱。</p>
-<p align="center">
 
-</p><p><a target="_blank" rel="noopener" href="https://github.com/ellerbrock/open-source-badge/"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" alt="Open Source Love"></a> <a target="_blank" rel="noopener" href="https://opensource.org/licenses/GPL-2.0"><img src="https://badges.frapsoft.com/os/gpl/gpl.svg?v=103" alt="GPL Licence"></a></p>
-<p></p>
 
-<h2 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a>Live Demo</h2><p align="center">
-➡️ <a target="_blank" rel="noopener" href="https://jackzong.github.io">Demo</a>
-</p>
 
-<h2 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h2><p><img src="https://github.com/JackZong/burger-king-hexo-theme/blob/master/source/imgs/Burgerking.png" alt="你的名字"></p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><ol>
-<li>下载主题文件，直接<code>git clone</code>本仓库或者下载.zip 包</li>
-<li>在<code>themes</code>主题文件夹下创建新目录<code>burgerking</code>,然后将本主题文件全部拷贝过去</li>
-<li>然后在 hexo 全局配置文件_config.yml 中应用主题：</li>
-</ol>
-<pre><code>theme: burgerking
-</code></pre>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><p>theme&#x2F;_config.yml</p>
-<pre><code class="yml">## highlight 主题选择
-highlight:
-  theme: vs2015
-## pv pu
-busuanzi:
-  enable: true
-</code></pre>
-<h2 id="配置-Gitalk"><a href="#配置-Gitalk" class="headerlink" title="配置 Gitalk"></a>配置 Gitalk</h2><p>root&#x2F;_config.yml</p>
-<pre><code class="yml">// Gitalk settings, check at: https://github.com/gitalk/gitalk#usage
-Gitalk:
-  enable: true
-  clientID: &quot;&quot;
-  clientSecret: &quot;&quot;
-  repo: &quot;&quot;
-  owner: &quot;&quot;
-  admin: [&quot;xx&quot;]
-</code></pre>
-<p>这样就安装好了，尽情享受吧！</p>
-<h2 id="Release-notes"><a href="#Release-notes" class="headerlink" title="Release notes"></a>Release notes</h2><h3 id="v1-4"><a href="#v1-4" class="headerlink" title="v1.4"></a>v1.4</h3><ul>
-<li>Mobile device support</li>
-<li>PU &amp; PV</li>
-</ul>
-<h3 id="v1-3"><a href="#v1-3" class="headerlink" title="v1.3"></a>v1.3</h3><ul>
-<li>Add Gitalk</li>
-</ul>
-<h3 id="v1-2"><a href="#v1-2" class="headerlink" title="v1.2"></a>v1.2</h3><ul>
-<li>Add code highlight support</li>
-<li>hexo theme unit test check(<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-theme-unit-test">checklist</a>)</li>
-</ul>
-<h3 id="v1-1"><a href="#v1-1" class="headerlink" title="v1.1"></a>v1.1</h3><ul>
-<li>样式更新</li>
-<li>背景画像 toggle</li>
-</ul>
-<h3 id="V1-0"><a href="#V1-0" class="headerlink" title="V1.0"></a>V1.0</h3><ul>
-<li>主题基本功能可用，包括主页、文章归档、about、文档详情页</li>
-<li>主题分页器</li>
-</ul>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
-<li><input checked disabled type="checkbox"> V1.0 博客基础页面设计和动态化</li>
-<li><input checked disabled type="checkbox"> Archiver 文章归档时间轴</li>
-<li><input checked disabled type="checkbox"> Tag 页面</li>
-<li><input checked disabled type="checkbox"> Analytics tool</li>
-<li><input checked disabled type="checkbox"> Gitalk</li>
-<li><input checked disabled type="checkbox"> 移动端适配</li>
-<li><input disabled type="checkbox"> Category 页面</li>
-<li><input disabled type="checkbox"> Music bar</li>
-</ul>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-                                      
-                            </div>
-                          </div>
-                          <div class="article-footer">
+  <meta name="author" content="Mansifield">
 
-                          </div>
-</article>
-       
-      
-      
-        <article class="card ">
-  
-              
-                <div class="posted-on">『24年08月10日』</div>
-                <h3 class="article-title"><a href="/2024/08/10/折腾三日/"><span>
-                      折腾三日
-                    </span></a></h3>
-                
-                    
-                      <div class="article-top-meta">
-                        
-                          
-                            <a href="/tags/闲谈/" class="post-tag">闲谈</a>
-                              
-                      </div>
-                      
 
-                          <div class="article-content">
-                            <div class="entry">
-                              
-                                    <p><img src="/2024/08/10/%E6%8A%98%E8%85%BE%E4%B8%89%E6%97%A5/882569.png"></p>
-<p>为了制作这个博客，我足足折腾了三天，前面都还好，就是那个 <code>npm install hexo-deployer-git --save</code> 卡了我半天，期间也找过一些解决办法，说用淘宝镜像什么的，但是都没用，只能是一直反复尝试……实际上，我真正操作的时间只有不到10分钟，剩下的时间都在下载、失败、重试、下载、失败。哪怕是搭了梯子也没用，不知道是不是我操作问题，好在终于是成功了。</p>
-<p><strong>反正，仅在此给后来者一点建议：多试就完事了，下载到第三天的时候我自己都不报什么期望了，但是你看，这不就成功了？努力总是会带来一点惊喜的。</strong></p>
-<h2 id="搭建框架的教程"><a href="#搭建框架的教程" class="headerlink" title="搭建框架的教程"></a>搭建框架的教程</h2><p>分享一下使用Hexo框架搭建博客的相关教程：</p>
-<pre><code>https://tech.yemengstar.com/hexo-tutorial-deploy-githubpages-beginner/  #很详细的Hexo部署教程，基本每一步都有截图。
 
-https://mao-design.pages.dev/posts/1185/  #以Github为载体，用 Netlify 部署博客的教程，可以提高访问速度。
-</code></pre>
-<p>框架搭建好之后就可以使用Hexo三大家了，和直接使用HTML相比，Hexo的优势主要是方便快捷，而且添加文章不需要再敲代码的格式。</p>
-<h2 id="给博客更换主题"><a href="#给博客更换主题" class="headerlink" title="给博客更换主题"></a>给博客更换主题</h2><p>进入hexo官网，选择主题，选择自己喜欢的主题然后下载即可，注：有些主题所需的插件不知是什么原因，会下载出错，所以如果遇到下载出错，那就换个主题吧</p>
-<p>当然，你也可以考虑我现在正在用的主题（3-hexo）</p>
-<ol>
-<li><p>3-hexo是hexo的主题，如果你也喜欢这款主题的话，则可以把我准备好的主题文件夹（3-hexo）移动到自己博客的themes文件夹里面</p>
-</li>
-<li><p>此外这款主题要需要对博客的_config,yml文件进行一些设置，我这里已经准备好了，只需要把我准备好的_config.yml移到自己博客的根目录下即可</p>
-</li>
-<li><p>但我只把这款主题的一些基本功能开启了而已，还有一些功能需要自己手动开启，比如全文搜索，数字统计之类的功能</p>
-</li>
-<li><p>至于如何开启全文搜索和数字统计之类的功能，该主题的作者已经在3-hexo里面的_config.yml里面写的有详细的开启方法</p>
-</li>
-<li><p>更详细的功能可以参考该主题作者的博客，上面有该主题的一些详细的使用教程</p>
-</li>
-<li><p>该主题作者的博客地址：<a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/%EF%BC%8C%E8%AF%A5%E4%B8%BB%E9%A2%98%E7%9A%84GitHub%E5%9C%B0%E5%9D%80">https://yelog.org/2017/03/23/3-hexo-instruction/，该主题的GitHub地址</a>: <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">https://github.com/yelog/hexo-theme-3-hexo</a> ,上面有该主题配置的详细资料，本文章只是记录自己所遇到的问题以及一些基本的使用方法。</p>
-</li>
-</ol>
-<p>一般每个主题都会有一个GitHub仓库，上面详细的写的有你所下载的主题需要什么必备插件（这些插件是运行hexo主题的必备插件，没有这些插件的话自己的hexo主题会运行不正常的），以及安装方法，每个主题安装的方法略有不同，但是大差不差，基本流程：</p>
-<p>在自己博客的根目录下，把下载好的主题包 <em><strong>解压</strong></em> 并移到一个名为 <em><strong>themes</strong></em> 的文件夹下，然后在回到根目录下，编辑一个叫 <strong>_config.yml</strong> 的配置文件，打开这个文件，找到 <strong>theme</strong> 选项，输入你<strong>要配置的主题的名字</strong>，<em><strong>注意</strong></em> 选项与名字之间要有空格，例：<code>theme: 主题名称</code></p>
-<p>在使用快捷键ctrl+s保存即可，在回到根目录上，打开终端，输入命令 <code>hexo clean</code> ，在输入命令 <code>hexo g</code> ，最后输入 <code>hexo s</code> ，输入这三个命令之后没有红色的字体就说明没有报错，此时终端会显示一串网址 <code>http://localhost:4000</code> 输入这串网址即可预览自己博客的主题了，如果想停止访问的话，在终端按下快捷键 <code>ctrl+c</code> 即可退出。</p>
-<h2 id="更新博客的方法"><a href="#更新博客的方法" class="headerlink" title="更新博客的方法"></a>更新博客的方法</h2><p><strong>如何显示图片：</strong></p>
-<p>在 <code>blog/source/_posts</code> 目录下创建一个用于放 <strong>图片的文件夹</strong>，然后再在文件夹外面创建一个MD文件，注意： <strong><em>MD文件名</em> 要和 <em>图片文件夹名</em> 相同</strong></p>
-<p>例如：我用于存放图片的文件夹名称为 <strong>image</strong> ，里面有一张 <strong>Hello.png</strong> 图片。</p>
-<p>如果我想要上传名字为 <strong>Hello.png</strong> 的图片，只需要在md文件里面输入 <code>![](image/Hello.png)</code> 自己的博客就可以看到图片了。不过刚开始博客的时候可能不会显示，需要刷新一下。</p>
-<p>上面这个教程，如果部署到GitHub上一般是没有问题了，但是Gitee可能还会有问题，这时候就要看你的仓库的名字和你路径的名字是否一样，名字最好是自己的博客名，比如我的博客名是Mansifield,那么仓库名和路径字也必须是Mansifield。</p>
-<p>顺带再提一下文件命名相关问题：自己博客上就可看到图片了，图片名称、文件夹名称、和MD文件名称都可以为中文，但是为了防止错误推荐使用英文或者数字。但注意，图片文件夹名称 &#x3D;&#x3D; md文件名称。</p>
 
-                                      
-                            </div>
-                          </div>
-                          <div class="article-footer">
 
-                          </div>
-</article>
-       
-      
-    
-</div>
+<title>Hexo</title>
 
-    </main>
-    <div class="footer">
-  <div class="copy">
-    &copy;
-      2024 Copyright.Mansifield <a href="https://github.com/JackZong" target="_blank" title="Theme created by @晝行燈">@晝行燈</a>
-  </div>
-  <div class="hexo">
-    <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
-  </div>
-</div>
 
+
+<link rel="icon" href="/favicon.png">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
+
+
+
+<script src="/lib/jquery.min.js"></script>
+
+
+<script src="/lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 <script>
-  window.onload = function () {
-    const withBg = localStorage.getItem('withBg');
-    if (withBg === 'true') {
-      document.body.classList.add('with-bg');
-      document.getElementById('bgToggle').classList.add('active');
-    }
-
-    document.getElementById('bgToggle').addEventListener('click', function (e) {
-      e.preventDefault();
-      const withBg = localStorage.getItem('withBg');
-      if (withBg === 'true') {
-        localStorage.setItem('withBg', 'false');
-        document.body.classList.remove('with-bg');
-        document.getElementById('bgToggle').classList.remove('active');
-      } else {
-        localStorage.setItem('withBg', 'true');
-        document.body.classList.add('with-bg');
-        document.getElementById('bgToggle').classList.add('active');
-      }
-    })
-  }
+  tailwind.config = {
+    darkMode: "class",
+  };
 </script>
 
 
-  <script src="/plugins/highlight/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+<script src="/lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200 relative">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="Hexo" />
+          Hexo
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="/archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="/category">Categories</a>
+        
+          <a class="hidden sm:flex" href="/tags">Tags</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/xbmlz">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5 hidden sm:flex" title="Github" href="rss2.xml">
+          <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
+        </a>
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/category" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/tags" class="flex h-12 sm:h-auto items-center">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="pt-14">
+    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
+  <div class="flex flex-col h-48 items-center justify-center">
+    <h1 class="site-title text-4xl leading-relaxed">
+      Hexo
+    </h1>
+    <p class="text-gray-500 mt-2">
+      
+    </p>
+  </div>
+  
+  
+    
+    
+      <div class="relative pointer-events-none">
+        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2024</span>
+      </div>
+    
+    <a style="--stagger:0" href="/2024/08/12/%E5%85%B3%E4%BA%8E%E6%8E%A7%E4%BB%B6%E5%8F%AF%E8%A7%81%E6%80%A7%E7%9A%84%E5%88%87%E6%8D%A2/" data-animate>
+      <header>
+        <h2 class="font-bold text-xl">
+          关于控件可见性的切换
+        </h2>
+      </header>
+      <section class="text-gray-400 my-2 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Aug 12
+          ·
+          4 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a style="--stagger:1" href="/2024/08/11/README/" data-animate>
+      <header>
+        <h2 class="font-bold text-xl">
+          关于主题
+        </h2>
+      </header>
+      <section class="text-gray-400 my-2 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Aug 11
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a style="--stagger:2" href="/2024/08/10/%E6%8A%98%E8%85%BE%E4%B8%89%E6%97%A5/" data-animate>
+      <header>
+        <h2 class="font-bold text-xl">
+          折腾三日
+        </h2>
+      </header>
+      <section class="text-gray-400 my-2 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Aug 10
+          ·
+          4 min
+        </p>
+      </section>
+    </a>
+  
+</section>
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitors</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Page Views</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
+    <span>© 2022</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <div class="back-to-top box-border fixed right-6 z-1024 -bottom-20 rounded py-1 px-1 bg-slate-900 opacity-60 text-white cursor-pointer text-center dark:bg-slate-600">
+    <span class="flex justify-center items-center text-sm">
+      <iconify-icon width="18" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+      <span id="scrollpercent"><span>0</span> %</span>
+    </span>
+  </div>
+  
+<script src="/js/main.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      const mapleCount = "10";
+      const speed = "0.5";
+      const mapleEl = document.getElementById("maple");
+      const maples = Array.from({ length: mapleCount }).map(() => {
+        const maple = document.createElement("div");
+        const scale = Math.random() * 0.5 + 0.5;
+        const offset = Math.random() * 2 - 1;
+        const x = Math.random() * mapleEl.clientWidth;
+        const y = -Math.random() * mapleEl.clientHeight;
+        const duration = 10 / speed;
+        const delay = -duration;
+        maple.className = "maple";
+        maple.style.width = `${24 * scale}px`;
+        maple.style.height = `${24 * scale}px`;
+        maple.style.left = `${x}px`;
+        maple.style.top = `${y}px`;
+        maple.style.setProperty("--maple-fall-offset", offset);
+        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
+        maple.style.animation = `fall ${duration}s linear infinite`;
+        maple.style.animationDelay = `${delay}s`;
+        mapleEl.appendChild(maple)
+        return maple
+      })
+    });
+  </script>
   
 
-    
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-      
-        </body>
 
-        </html>
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
 </body>
+
 </html>
