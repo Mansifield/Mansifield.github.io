@@ -15,7 +15,7 @@
 
 
 
-<title>关于控件可见性的切换 | Hexo</title>
+<title>Godot - 关于控件可见性的切换 | 晝行燈</title>
 
 
 
@@ -149,12 +149,12 @@
     <nav class="flex items-center text-base">
       <a href="/" class="group">
         <h2 class="font-medium tracking-tighterp text-l p-2">
-          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="Hexo" />
-          Hexo
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="晝行燈" />
+          晝行燈
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        关于控件可见性的切换
+        Godot - 关于控件可见性的切换
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -221,12 +221,16 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        关于控件可见性的切换
+        Godot - 关于控件可见性的切换
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -237,12 +241,12 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>4 min</span>
+            <span>5 min</span>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>1.1k words</span>
+            <span>1.2k words</span>
           </span>
           
         </section>
@@ -251,22 +255,28 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <p>一开始我使用的是一个封装好的切换函数（由于写博客的时候我已经删掉了原代码，这里没有贴上代码），每次我点击时，就对可见性进行反转……不过之后的测试中我遇到了一个BUG，当我先点击continue再点击start时，可见性关系会彻底错乱：</p>
+    <h2 id="遇到的BUG"><a href="#遇到的BUG" class="headerlink" title="遇到的BUG"></a>遇到的BUG</h2><p>一开始我使用的是一个封装好的切换函数（由于写博客的时候我已经删掉了原代码，这里没有贴上代码），每次我点击时，就对可见性进行反转……不过之后的测试中我遇到了一个BUG，当我先点击continue再点击start时，可见性关系会彻底错乱：</p>
 <blockquote>
-<p>简单来说就是，由于我点击了continue，continuemenu可见、setting、end不可见，此时再点击start进行反转，就会变成setting、end可见……一团乱。</p>
+<p>简单来说，由于我点击了continue，使得continuemenu可见、setting、end不可见，此时再点击start进行反转，就会变成setting、end可见……一团乱。</p>
 </blockquote>
-<p>之后我仔细思考了一下，决定加上一个记录点击次数的功能。途中发现如果按照之前的操作那样点击，也就是continue - start，可见性倒是没乱了，但是由于点击次数加了1，而第二次点击时的效果是恢复可见性……这就导致我需要点两次才能弹出菜单，所以我给三个菜单的点击次数都分别加上了点击次数的统计，并且在他们点击的时候清除另外两个按钮的点击次数，这样就不会导致需要点击两次才能弹出来的情况了。</p>
+<p>之后我仔细思考了一下解决办法，决定加上一个记录点击次数的功能。</p>
+<p>但途中，我发现如果按照之前的操作那样点击，也就是continue - start，可见性倒是没乱了，可由于点击次数加了1，而第二次点击时的效果就会变成恢复可见性……这就导致需要点两次才能弹出菜单。</p>
+<p>我最后的解决办法是：给三个菜单的点击次数都分别加上了点击次数的统计，并且在他们点击的时候清除另外两个按钮的点击次数，这样就不会导致需要点击两次才能弹出来的情况了。</p>
 <p>不过代码方面就……朴实无华。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">func _ready():</span><br><span class="line"># 初始可见性</span><br><span class="line">$ScrollContainer/VBoxContainer/Start.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">$ScrollContainer/VBoxContainer/End.visible = true</span><br><span class="line"></span><br><span class="line"># 点击控件的可见性切换</span><br><span class="line">var click_counts = [0, 0, 0]</span><br><span class="line">func _on_start_pressed(): toggle_visibility(0)</span><br><span class="line">func _on_continue_pressed(): toggle_visibility(1)</span><br><span class="line">func _on_setting_pressed(): toggle_visibility(2)</span><br><span class="line"></span><br><span class="line">func toggle_visibility(button_index):</span><br><span class="line">	for i in range(3):</span><br><span class="line">		if i == button_index:</span><br><span class="line">			click_counts[i] += 1</span><br><span class="line">			if click_counts[i] % 2 == 0:</span><br><span class="line">				$ScrollContainer/VBoxContainer/End.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">				$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">				$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">				$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">			else:</span><br><span class="line">				if i == 0:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">				elif i == 1:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">				elif i == 2:</span><br><span class="line">					$ScrollContainer/VBoxContainer/StartMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Continue.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/ContinueMenu.visible = false</span><br><span class="line">					$ScrollContainer/VBoxContainer/Setting.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/SettingMenu.visible = true</span><br><span class="line">					$ScrollContainer/VBoxContainer/End.visible = false</span><br><span class="line">		else:</span><br><span class="line">			click_counts[i] = 0</span><br></pre></td></tr></table></figure>
 
-<p>所以我的下一步是，精简代码，以下是我精简后的代码，我使用了一个新的函数来接受true or false，把初始可见性和后续的点击可见性合并到了一起。</p>
+<h2 id="精简代码"><a href="#精简代码" class="headerlink" title="精简代码"></a>精简代码</h2><p>如你所见，代码倒是挺直观的，就是太长了，有很多多冗余部分。所以我的下一步是，精简代码。</p>
+<p>以下是我精简后的代码，我使用了一个新的函数 <code>set_visibility</code> 来接受 true or false，这样也能够把初始可见性和点击可见性合并到了一起。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">func _ready():</span><br><span class="line">	# 初始可见性</span><br><span class="line">	set_visibility(true, false, true, false, true, false, true)</span><br><span class="line"></span><br><span class="line"># 点击按钮的可见性切换</span><br><span class="line">var click_counts = [0, 0, 0]</span><br><span class="line"></span><br><span class="line">func _on_start_pressed(): toggle_visibility(0)</span><br><span class="line">func _on_continue_pressed(): toggle_visibility(1)</span><br><span class="line">func _on_setting_pressed(): toggle_visibility(2)</span><br><span class="line"></span><br><span class="line">func toggle_visibility(button_index):</span><br><span class="line">	# 清空其他按钮的点击次数</span><br><span class="line">	for i in range(click_counts.size()):</span><br><span class="line">		click_counts[i] = 0 if i != button_index else click_counts[i] + 1</span><br><span class="line">	</span><br><span class="line">	var is_visible = click_counts[button_index] % 2 == 0</span><br><span class="line">	print(&quot;按钮 %d 点击次数: %d，可见性: %s&quot; % [button_index, click_counts[button_index], is_visible])</span><br><span class="line">	match button_index:</span><br><span class="line">		0:</span><br><span class="line">			set_visibility(true, not is_visible, is_visible, false, is_visible, false, is_visible)</span><br><span class="line">		1:</span><br><span class="line">			set_visibility(true, false, true, not is_visible, is_visible, false, is_visible)</span><br><span class="line">		2:</span><br><span class="line">			set_visibility(true, false, true, false, true, not is_visible, is_visible)</span><br><span class="line"></span><br><span class="line">func set_visibility(start, start_menu, continue_, continue_menu, setting, setting_menu, end):</span><br><span class="line">	$ScrollContainer/VBoxContainer/Start.visible = start</span><br><span class="line">	$ScrollContainer/VBoxContainer/StartMenu.visible = start_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/Continue.visible = continue_</span><br><span class="line">	$ScrollContainer/VBoxContainer/ContinueMenu.visible = continue_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/Setting.visible = setting</span><br><span class="line">	$ScrollContainer/VBoxContainer/SettingMenu.visible = setting_menu</span><br><span class="line">	$ScrollContainer/VBoxContainer/End.visible = end</span><br></pre></td></tr></table></figure>
 
-<p>代码到这里就差不多完成了，不过我个人比较喜欢钻牛角尖，match的性能消耗稍微高了那么一点点点，换成数组的方式更加直观高效，visibilities[button_index]中的button_index代表我们点击的是第几个控件，这同时也会返回数组中对应行的值。不过记得，改成这样的话，前面的初始化也得改成数组的形式。</p>
+<p>代码到这里就差不多完成了，不过我个人比较喜欢钻牛角尖，match的性能消耗稍微高了那么一点点点，换成数组的方式更加直观高效。</p>
+<p>下面这个代码中，<code>visibilities[button_index]中的button_index</code>代表我们点击的是第几个控件，这是前面定义好的，同时这也会作为一个索引值，返回数组中对应行的值。不过记得，改成这样的话，前面的初始化也得改成数组的形式。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 点击按钮的可见性切换</span><br><span class="line"></span><br><span class="line">......（未修改部分就省略了）</span><br><span class="line"></span><br><span class="line">	var visibilities = [</span><br><span class="line">		[true, not is_visible, is_visible, false, is_visible, false, is_visible],</span><br><span class="line">		[true, false, true, not is_visible, is_visible, false, is_visible],</span><br><span class="line">		[true, false, true, false, true, not is_visible, is_visible]</span><br><span class="line">	]</span><br><span class="line">	</span><br><span class="line">	set_visibility(visibilities[button_index])</span><br><span class="line"></span><br><span class="line">func set_visibility(visibility_array):</span><br><span class="line">	$ScrollContainer/VBoxContainer/Start.visible = visibility_array[0]</span><br><span class="line">	$ScrollContainer/VBoxContainer/StartMenu.visible = visibility_array[1]</span><br><span class="line">	$ScrollContainer/VBoxContainer/Continue.visible = visibility_array[2]</span><br><span class="line">	$ScrollContainer/VBoxContainer/ContinueMenu.visible = visibility_array[3]</span><br><span class="line">	$ScrollContainer/VBoxContainer/Setting.visible = visibility_array[4]</span><br><span class="line">	$ScrollContainer/VBoxContainer/SettingMenu.visible = visibility_array[5]</span><br><span class="line">	$ScrollContainer/VBoxContainer/End.visible = visibility_array[6]</span><br></pre></td></tr></table></figure>
 
-<p>好了，到这里真的就没了。我大概能想到代码下一步优化的控件，例如把数组也删掉，但一来我并不熟悉，二来太麻烦，大概这样就行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 取消掉数组</span><br><span class="line">$ScrollContainer/VBoxContainer/Start.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/StartMenu.visible = not is_visible if button_index == 0 else false</span><br></pre></td></tr></table></figure>
+<p>好了，到这里真的就没了。</p>
+<p>我其实大概能想到代码下一步优化的控件，例如把数组也删掉，把按钮的信号链接给换成匿名函数之类的……</p>
+<p>但一来我并不熟悉，二来太麻烦，目前先改成这样就行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这是进一步优化的一些思路，取消掉数组</span><br><span class="line">$ScrollContainer/VBoxContainer/Start.visible = true</span><br><span class="line">$ScrollContainer/VBoxContainer/StartMenu.visible = not is_visible if button_index == 0 else false</span><br></pre></td></tr></table></figure>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -285,7 +295,7 @@
     </div>
     <div>
       
-        <a href="/2024/08/11/README/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="/2024.08.11/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           关于主题
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
