@@ -15,7 +15,7 @@
 
 
 
-<title>Godot - 关于纯代码实现的动画效果 | 晝行燈</title>
+<title>Godot - 纯代码实现动画效果 | 晝行燈</title>
 
 
 
@@ -154,7 +154,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Godot - 关于纯代码实现的动画效果
+        Godot - 纯代码实现动画效果
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -230,7 +230,7 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Godot - 关于纯代码实现的动画效果
+        Godot - 纯代码实现动画效果
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
@@ -246,7 +246,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>639 words</span>
+            <span>623 words</span>
           </span>
           
         </section>
@@ -256,15 +256,14 @@
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
     <h2 id="制作历程"><a href="#制作历程" class="headerlink" title="制作历程"></a>制作历程</h2><p>因为没怎么系统性的学习过，我走了不少弯路，在实现动画效果之处，我使用的是纯主题……那其实都算不上是动画了，就是个切换效果而已，就这，还浪费了我一天的时间。</p>
-<p>再之后，我使用了animation节点来制作动画效果，花了一天。好在成果不错，但是我一共有四个控件，每个控件都要实现鼠标进入动画和离开动画的话，一共得弄八个动画，然后鼠标信号也得绑定八个（其实也可以用connect来连接，也能用两个实现）……总之，这不符合我精简的美学，所以我去研究了如何使用纯代码来实现动画效果。</p>
-<p align="center"><font size="2">成品展示</font></p>
-![](关于纯代码实现的动画效果/20240815.gif)
+<p>再之后，我使用了animation节点来制作动画效果，花了一天。好在成果不错，但是我一共有四个控件，每个控件都要实现鼠标进入动画和离开动画的话，一共得弄八个动画，然后信号也得绑定八个……总之，这不符合我精简的美学，所以我去研究了如何使用纯代码来实现动画效果，下面这个是纯代码实现的动画效果展示：</p>
+<center><img src="/2024.08.15/1/20240815.gif" width="40%" height="auto"></center>
 
-<p>首先肯定是绑定信号嘛，这个在godot中有提供，我第一次设计代码的时候一般都是以直观为主，不考虑太多的优化，所以雏形大概是这样，我放出来的是鼠标进入的部分，退出的部分反着来就好：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func _on_start_mouse_entered():  # 绑定了一个鼠标进入的信号在start按钮上</span><br><span class="line">	if $ScrollContainer/VBoxContainer/StartMenu.visible == false:  # 只有startmenu节点不可见的时候才有动画效果，点击后就会固定。</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title.add_theme_font_size_override(&quot;font_size&quot;, 35)  # 字体增大</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title.add_theme_color_override(&quot;font_color&quot;, &quot;#013E41&quot;)  # 颜色变深</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title/LTitle.size = Vector2(110, 28)  # 小标题的容器尺寸增大</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title/LTitle.position = Vector2(49.5, -14)  # 由于字体变大了，而锚点是左上角，因此位置需要做出相应的改变</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title/LTitle.add_theme_font_size_override(&quot;font_size&quot;, 19)  # 同样的代码，就不啰嗦了</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title/LTitle.add_theme_color_override(&quot;font_color&quot;, &quot;#4A475C&quot;)  # 同上</span><br><span class="line">		# 线条的动画效果</span><br><span class="line">		var tween = get_tree().create_tween()  # 获取一个tween节点，用于制作补间动画</span><br><span class="line">		$ScrollContainer/VBoxContainer/Start/Title/Line2D.scale = Vector2(0, 1)  # 线条初始缩放值为（0, 1），相当于看不见</span><br><span class="line">		tween.tween_property($ScrollContainer/VBoxContainer/Start/Title/Line2D, &quot;scale&quot;, Vector2(1,1), 0.1)  # X轴从0伸展到1，实现动画效果</span><br></pre></td></tr></table></figure>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>首先，肯定是绑定信号嘛。这个在godot中有提供，我第一次设计代码的时候一般都是以直观为主，不考虑太多的优化，所以雏形大概是这样，我放出来的是鼠标进入的部分，退出的部分反着来就好：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> _on_start_mouse_entered():  <span class="comment"># 绑定了一个鼠标进入的信号在start按钮上</span></span><br><span class="line">	<span class="keyword">if</span> <span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>StartMenu.visible == false:  <span class="comment"># 只有startmenu节点不可见的时候才有动画效果，点击后就会固定。</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start/Title.add_theme_font_size_override(<span class="string">&quot;font_size&quot;</span>, <span class="number">35</span>)  <span class="comment"># 字体增大</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start/Title.add_theme_color_override(<span class="string">&quot;font_color&quot;</span>, <span class="string">&quot;#013E41&quot;</span>)  <span class="comment"># 颜色变深</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>LTitle.size = Vector2(<span class="number">110</span>, <span class="number">28</span>)  <span class="comment"># 小标题的容器尺寸增大</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>LTitle.position = Vector2(<span class="number">49.5</span>, -<span class="number">14</span>)  <span class="comment"># 由于字体变大了，而锚点是左上角，因此位置需要做出相应的改变</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>LTitle.add_theme_font_size_override(<span class="string">&quot;font_size&quot;</span>, <span class="number">19</span>)  <span class="comment"># 同样的代码，就不啰嗦了</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>LTitle.add_theme_color_override(<span class="string">&quot;font_color&quot;</span>, <span class="string">&quot;#4A475C&quot;</span>)  <span class="comment"># 同上</span></span><br><span class="line">		<span class="comment"># 线条的动画效果</span></span><br><span class="line">		var tween = get_tree().create_tween()  <span class="comment"># 获取一个tween节点，用于制作补间动画</span></span><br><span class="line">		<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>Line2D.scale = Vector2(<span class="number">0</span>, <span class="number">1</span>)  <span class="comment"># 线条初始缩放值为（0, 1），相当于看不见</span></span><br><span class="line">		tween.tween_property(<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>Line2D, <span class="string">&quot;scale&quot;</span>, Vector2(<span class="number">1</span>,<span class="number">1</span>), <span class="number">0.1</span>)  <span class="comment"># X轴从0伸展到1，实现动画效果</span></span><br></pre></td></tr></table></figure>
 
 <p>然后，我查找Godot官方手册发现get_tree函数其实是没必要的，tween继承自引用计数类，跳出函数域后就会自动销毁了，create_tween可以直接绑定在节点上，所以动画部分的代码变成了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 线条的动画效果</span><br><span class="line">$ScrollContainer/VBoxContainer/Start/Title/Line2D.scale = Vector2(0, 1)</span><br><span class="line">create_tween().tween_property($ScrollContainer/VBoxContainer/Start/Title/Line2D, &quot;scale&quot;, Vector2(1,1), 0.1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 线条的动画效果</span></span><br><span class="line"><span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>Line2D.scale = Vector2(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">create_tween().tween_property(<span class="variable">$ScrollContainer</span><span class="regexp">/VBoxContainer/</span>Start<span class="regexp">/Title/</span>Line2D, <span class="string">&quot;scale&quot;</span>, Vector2(<span class="number">1</span>,<span class="number">1</span>), <span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -279,6 +278,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="/2024.08.15/2/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Godot - 代码优化
+        </a>
       
     </div>
     <div>
