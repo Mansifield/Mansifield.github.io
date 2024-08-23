@@ -246,7 +246,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>623 words</span>
+            <span>657 words</span>
           </span>
           
         </section>
@@ -256,7 +256,7 @@
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
     <h2 id="制作历程"><a href="#制作历程" class="headerlink" title="制作历程"></a>制作历程</h2><p>因为没怎么系统性的学习过，我走了不少弯路，在实现动画效果之处，我使用的是纯主题……那其实都算不上是动画了，就是个切换效果而已，就这，还浪费了我一天的时间。</p>
-<p>再之后，我使用了animation节点来制作动画效果，花了一天。好在成果不错，但是我一共有四个控件，每个控件都要实现鼠标进入动画和离开动画的话，一共得弄八个动画，然后信号也得绑定八个……总之，这不符合我精简的美学，所以我去研究了如何使用纯代码来实现动画效果，下面这个是纯代码实现的动画效果展示：</p>
+<p>再之后，我使用了animation节点来制作动画效果，花了一天。好在成果不错，但是我一共有四个控件，每个控件都要实现鼠标进入动画和离开动画的话，一共得弄八个动画，然后信号也得绑定八个……总之，这不符合我精简的美学，所以我去研究了如何使用纯代码来实现动画效果，下面这个是纯代码实现的动画效果展示（写的时候考虑到之后要优化代码，就没有重复写四遍，所以只有前两个控件有动画）：</p>
 <center><img src="/2024.08.15/1/20240815.gif" width="40%" height="auto"></center>
 
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>首先，肯定是绑定信号嘛。这个在godot中有提供，我第一次设计代码的时候一般都是以直观为主，不考虑太多的优化，所以雏形大概是这样，我放出来的是鼠标进入的部分，退出的部分反着来就好：</p>
