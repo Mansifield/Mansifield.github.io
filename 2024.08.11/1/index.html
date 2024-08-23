@@ -15,7 +15,7 @@
 
 
 
-<title>关于主题 | 晝行燈</title>
+<title>Markdown 语法记录 | 晝行燈</title>
 
 
 
@@ -154,7 +154,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        关于主题
+        Markdown 语法记录
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -230,13 +230,13 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        关于主题
+        Markdown 语法记录
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2024-08-17</time>
+            <time>2024-08-23</time>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
@@ -246,7 +246,7 @@
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>297 words</span>
+            <span>373 words</span>
           </span>
           
         </section>
@@ -255,53 +255,34 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <h2 id="君の名は。"><a href="#君の名は。" class="headerlink" title="君の名は。"></a>君の名は。</h2><p>君の名は。是一款基于电影《你的名字》客制化的 hexo 主题，基于 hexo，使用了 ejs，stylus，normalize.css，主题简洁明了，仅此表达对电影你的名字的喜爱。</p>
-<p align="center">
+    <p>搬运自<a target="_blank" rel="noopener" href="https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/#%E8%B6%85%E9%93%BE%E6%8E%A5">简明语法手册</a></p>
+<h2 id="文章格式"><a href="#文章格式" class="headerlink" title="文章格式"></a>文章格式</h2><p>front-matter 的基本格式示例如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Markdown</span> <span class="string">语法记录</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2024-08-11 20:19:32</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">Markdown</span>,<span class="string">LaTex</span>,<span class="string">教程</span>]</span><br><span class="line"><span class="attr">categories:</span> <span class="string">学习</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 
-</p><p><a target="_blank" rel="noopener" href="https://github.com/ellerbrock/open-source-badge/"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" alt="Open Source Love"></a> <a target="_blank" rel="noopener" href="https://opensource.org/licenses/GPL-2.0"><img src="https://badges.frapsoft.com/os/gpl/gpl.svg?v=103" alt="GPL Licence"></a></p>
-<p></p>
+<h2 id="斜体和粗体"><a href="#斜体和粗体" class="headerlink" title="斜体和粗体"></a>斜体和粗体</h2><p>使用 <code>*</code> 和 <code>**</code> 表示斜体和粗体，格式如下：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">*斜体*</span>， <span class="strong">**粗体**</span></span><br></pre></td></tr></table></figure>
+<p>渲染效果： 这是 <em>斜体</em>，这是 <strong>粗体</strong> 。</p>
+<h2 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h2><p>使用 =&#x3D;&#x3D; 表示一级标题，使用 -– 表示二级标题，格式如下：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">这是一个一级标题</span></span><br><span class="line"><span class="section">============================</span></span><br><span class="line"></span><br><span class="line"><span class="section">这是一个二级标题</span></span><br><span class="line"><span class="section">----------------------------</span></span><br><span class="line"></span><br><span class="line">### 这是一个三级标题</span><br></pre></td></tr></table></figure>
 
-<h2 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a>Live Demo</h2><p align="center">
-➡️ <a target="_blank" rel="noopener" href="https://jackzong.github.io">Demo</a>
-</p>
+<p>你也可以选择在行首加#号表示不同级别的标题 (H1-H6)，格式如下：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># H1</span><br><span class="line">## H2</span><br><span class="line">### H3</span><br><span class="line">#### H4</span><br><span class="line">##### H5</span><br><span class="line">###### H6</span><br></pre></td></tr></table></figure>
 
-<h2 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h2><p><img src="https://github.com/JackZong/burger-king-hexo-theme/blob/master/source/imgs/Burgerking.png" alt="你的名字"></p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><ol>
-<li>下载主题文件，直接<code>git clone</code>本仓库或者下载.zip 包</li>
-<li>在<code>themes</code>主题文件夹下创建新目录<code>burgerking</code>,然后将本主题文件全部拷贝过去</li>
-<li>然后在 hexo 全局配置文件_config.yml 中应用主题：</li>
-</ol>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">theme:</span> burgerking</span><br></pre></td></tr></table></figure>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>在单独的一行使用 *** 或者 — 表示分割线</p>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>使用 ~~ 表示删除线<br>这是一段错误的文本。</p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>插入文字超链接的格式如下 ：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">链接文字</span>](<span class="name">链接地址</span> <span class="string">&quot;链接标题&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><p>theme&#x2F;_config.yml</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## highlight 主题选择</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">vs2015</span></span><br><span class="line"><span class="comment">## pv pu</span></span><br><span class="line"><span class="attr">busuanzi:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>插入图片超链接的格式如下：</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片说明](图片链接 <span class="string">&quot;图片标题&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置-Gitalk"><a href="#配置-Gitalk" class="headerlink" title="配置 Gitalk"></a>配置 Gitalk</h2><p>root&#x2F;_config.yml</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">Gitalk</span> <span class="string">settings,</span> <span class="attr">check at:</span> <span class="string">https://github.com/gitalk/gitalk#usage</span></span><br><span class="line"><span class="attr">Gitalk:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">clientID:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">clientSecret:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">owner:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">admin:</span> [<span class="string">&quot;xx&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>插入音频，使用插件hexo-tag-aplayer，语法如下：</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">aplayer</span> title author url [picture_url, narrow, autoplay, width:xx%, lrc:xxx] %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">详情参见：hexo-tag-aplayer 中文使用文档</span></span><br></pre></td></tr></table></figure>
 
-<p>这样就安装好了，尽情享受吧！</p>
-<h2 id="Release-notes"><a href="#Release-notes" class="headerlink" title="Release notes"></a>Release notes</h2><h3 id="v1-4"><a href="#v1-4" class="headerlink" title="v1.4"></a>v1.4</h3><ul>
-<li>Mobile device support</li>
-<li>PU &amp; PV</li>
-</ul>
-<h3 id="v1-3"><a href="#v1-3" class="headerlink" title="v1.3"></a>v1.3</h3><ul>
-<li>Add Gitalk</li>
-</ul>
-<h3 id="v1-2"><a href="#v1-2" class="headerlink" title="v1.2"></a>v1.2</h3><ul>
-<li>Add code highlight support</li>
-<li>hexo theme unit test check(<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-theme-unit-test">checklist</a>)</li>
-</ul>
-<h3 id="v1-1"><a href="#v1-1" class="headerlink" title="v1.1"></a>v1.1</h3><ul>
-<li>样式更新</li>
-<li>背景画像 toggle</li>
-</ul>
-<h3 id="V1-0"><a href="#V1-0" class="headerlink" title="V1.0"></a>V1.0</h3><ul>
-<li>主题基本功能可用，包括主页、文章归档、about、文档详情页</li>
-<li>主题分页器</li>
-</ul>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
-<li><input checked disabled type="checkbox"> V1.0 博客基础页面设计和动态化</li>
-<li><input checked disabled type="checkbox"> Archiver 文章归档时间轴</li>
+<p>引用视频则直接插入iframe代码：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=<span class="string">&quot;/js/youtube-autoresizer.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;iframe <span class="attribute">width</span>=<span class="string">&quot;640&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;360&quot;</span> <span class="attribute">src</span>=<span class="string">&quot;https://www.youtube.com/embed/HfElOZSEqn4&quot;</span> <span class="attribute">frameborder</span>=<span class="string">&quot;0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h2><ul>
 <li><input checked disabled type="checkbox"> Tag 页面</li>
 <li><input checked disabled type="checkbox"> Analytics tool</li>
 <li><input checked disabled type="checkbox"> Gitalk</li>
